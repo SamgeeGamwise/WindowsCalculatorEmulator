@@ -51,7 +51,7 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.clearEntryButton = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.calculationDisplay = new System.Windows.Forms.TextBox();
@@ -237,14 +237,14 @@
             this.minusButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.minusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.minusButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.minusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.minusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.minusButton.ForeColor = System.Drawing.Color.White;
             this.minusButton.Location = new System.Drawing.Point(227, 334);
             this.minusButton.Margin = new System.Windows.Forms.Padding(1);
             this.minusButton.Name = "minusButton";
             this.minusButton.Size = new System.Drawing.Size(73, 50);
             this.minusButton.TabIndex = 11;
-            this.minusButton.Text = "–";
+            this.minusButton.Text = "-";
             this.minusButton.UseVisualStyleBackColor = false;
             this.minusButton.Click += new System.EventHandler(this.minusButton_Click);
             // 
@@ -373,7 +373,23 @@
             this.clearButton.TabIndex = 19;
             this.clearButton.Text = "C";
             this.clearButton.UseVisualStyleBackColor = false;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);            
+            // 
+            // clearEntryButton
+            // 
+            this.clearEntryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.clearEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.clearEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clearEntryButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.clearEntryButton.ForeColor = System.Drawing.Color.White;
+            this.clearEntryButton.Location = new System.Drawing.Point(77, 178);
+            this.clearEntryButton.Margin = new System.Windows.Forms.Padding(1);
+            this.clearEntryButton.Name = "clearEntryButton";
+            this.clearEntryButton.Size = new System.Drawing.Size(73, 50);
+            this.clearEntryButton.TabIndex = 22;
+            this.clearEntryButton.Text = "CE";
+            this.clearEntryButton.UseVisualStyleBackColor = false;
+            this.clearEntryButton.Click += new System.EventHandler(this.clearEntryButton_Click);
             // 
             // button20
             // 
@@ -404,21 +420,6 @@
             this.button21.TabIndex = 21;
             this.button21.Text = "X²";
             this.button21.UseVisualStyleBackColor = false;
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button22.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button22.ForeColor = System.Drawing.Color.White;
-            this.button22.Location = new System.Drawing.Point(77, 178);
-            this.button22.Margin = new System.Windows.Forms.Padding(1);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(73, 50);
-            this.button22.TabIndex = 22;
-            this.button22.Text = "CE";
-            this.button22.UseVisualStyleBackColor = false;
             // 
             // button23
             // 
@@ -472,7 +473,7 @@
             this.Controls.Add(this.calculationDisplay);
             this.Controls.Add(this.button24);
             this.Controls.Add(this.button23);
-            this.Controls.Add(this.button22);
+            this.Controls.Add(this.clearEntryButton);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.clearButton);
@@ -510,11 +511,13 @@
         }
 
         #endregion
-        private string total;
-        private string grandTotal;
-        private string calculationNumber;
+        private decimal operandOne;
+        private decimal operandTwo;
+        private decimal total;
         private string symbol;
-        private bool firstNumber;
+        private bool isFirst;
+        private bool hasDecimal;
+        private bool calculated;
         private TextBox display;
         private TextBox calculationDisplay;
         private Button oneButton;
@@ -538,9 +541,8 @@
         private Button clearButton;
         private Button button20;
         private Button button21;
-        private Button button22;
+        private Button clearEntryButton;
         private Button button23;
         private Button button24;
-
     }
 }
